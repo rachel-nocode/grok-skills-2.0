@@ -1,0 +1,295 @@
+---
+import { skills, categories } from "../data/skills.js";
+import "../styles/global.css";
+
+const selectedSkill = skills[0];
+const encodedSkills = JSON.stringify(skills);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="12 action skills Grok Bot can run: build, apply, QA, and ship." />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>Grok Skills 2.0</title>
+  </head>
+  <body>
+    <main class="app-shell" data-skills={encodedSkills}>
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Grok Skills 2.0 home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" role="img">
+              <path d="M12 3L14.8 9.2L21 12L14.8 14.8L12 21L9.2 14.8L3 12L9.2 9.2L12 3Z" />
+            </svg>
+          </span>
+          <span>Grok Skills 2.0</span>
+        </a>
+        <label class="search-wrap">
+          <span class="search-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" role="img">
+              <circle cx="11" cy="11" r="6.5"></circle>
+              <path d="M16 16L21 21"></path>
+            </svg>
+          </span>
+          <input id="searchInput" type="search" placeholder="Search skills..." autocomplete="off" />
+          <kbd>Cmd K</kbd>
+        </label>
+        <nav class="tabs" aria-label="Skill categories">
+          {categories.map((category) => (
+            <button class:list={["tab", category === "All" && "active"]} data-category={category}>
+              {category}
+            </button>
+          ))}
+        </nav>
+        <a class="open-grok" href="https://grok.com/" target="_blank" rel="noreferrer">Open Grok</a>
+      </header>
+
+      <aside class="sidebar">
+        <section>
+          <p class="rail-label">Categories</p>
+          <div class="rail-list">
+            {categories.map((category) => {
+              const count = category === "All" ? skills.length : skills.filter((skill) => skill.category === category).length;
+              return (
+                <button class:list={["rail-item", category === "All" && "active"]} data-category={category}>
+                  <span>{category} Skills</span>
+                  <strong>{count}</strong>
+                </button>
+              );
+            })}
+          </div>
+        </section>
+
+        <section>
+          <p class="rail-label">Built for</p>
+          <div class="capability-list">
+            <span>Grok Bot</span>
+            <span>Code</span>
+            <span>Browser</span>
+            <span>Files</span>
+            <span>Terminal</span>
+            <span>Writing</span>
+          </div>
+        </section>
+
+        <section class="note">
+          <p>Skills here are paste-ready prompts. Try in Grok copies the selected skill, then opens Grok.</p>
+        </section>
+      </aside>
+
+      <section class="market">
+        <div class="market-head">
+          <div>
+            <p id="resultCount">{skills.length} skills for Grok Bot</p>
+            <h1>12 action skills Grok Bot can run: build, apply, QA, ship.</h1>
+          </div>
+          <div class="sort-pill">Sort: Newest</div>
+        </div>
+
+        <div class="skill-grid" id="skillGrid">
+          {skills.map((skill, index) => (
+            <article class:list={["skill-card", index === 0 && "selected"]} data-id={skill.id} tabindex="0">
+              <div class="card-top">
+                <span class="skill-icon">{skill.title.slice(0, 1)}</span>
+                <span class="checkmark" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" role="img">
+                    <path d="M3.5 8.2L6.7 11.3L12.7 4.7"></path>
+                  </svg>
+                </span>
+              </div>
+              <h2>{skill.title}</h2>
+              <p>{skill.outcome}</p>
+              <div class="tags">
+                {skill.tags.map((tag) => <span>{tag}</span>)}
+              </div>
+              <div class="card-foot">
+                <span>{skill.capabilities.slice(0, 2).join(" / ")}</span>
+                <strong>{skill.tokens}</strong>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <aside class="detail-panel" id="detailPanel">
+        <button class="close-detail" id="closeDetail" aria-label="Close detail">X</button>
+        <div class="detail-title">
+          <span class="detail-icon">{selectedSkill.title.slice(0, 1)}</span>
+          <div>
+            <div class="detail-kicker">
+              <span id="detailCategory">{selectedSkill.category}</span>
+              <span>Grok Bot</span>
+            </div>
+            <h2 id="detailTitle">{selectedSkill.title}</h2>
+            <p id="detailOutcome">{selectedSkill.outcome}</p>
+          </div>
+        </div>
+
+        <div class="tags detail-tags" id="detailTags">
+          {selectedSkill.tags.map((tag) => <span>{tag}</span>)}
+        </div>
+
+        <div class="cap-row" id="detailCapabilities">
+          {selectedSkill.capabilities.map((item) => <span>{item}</span>)}
+        </div>
+
+        <section class="preview-block">
+          <p class="section-label">Preview</p>
+          <p id="detailPreview">{selectedSkill.outcome}</p>
+        </section>
+
+        <section class="prompt-block">
+          <div class="prompt-head">
+            <p class="section-label">Skill prompt</p>
+            <button id="miniCopy" aria-label="Copy skill prompt">Copy</button>
+          </div>
+          <pre><code id="promptCode">{selectedSkill.prompt}</code></pre>
+        </section>
+
+        <dl class="meta-grid">
+          <div>
+            <dt>Tokens</dt>
+            <dd id="detailTokens">{selectedSkill.tokens}</dd>
+          </div>
+          <div>
+            <dt>Updated</dt>
+            <dd id="detailUpdated">{selectedSkill.updated}</dd>
+          </div>
+          <div>
+            <dt>Author</dt>
+            <dd>Grok Skills 2.0</dd>
+          </div>
+        </dl>
+
+        <div class="detail-actions">
+          <button id="copySkill">Copy Skill</button>
+          <button id="tryGrok" class="primary">Try in Grok</button>
+        </div>
+      </aside>
+
+      <div class="toast" id="toast" role="status" aria-live="polite">Skill copied to clipboard</div>
+    </main>
+
+    <script>
+      const shell = document.querySelector(".app-shell");
+      const skills = JSON.parse(shell.dataset.skills);
+      const cards = [...document.querySelectorAll(".skill-card")];
+      const categoryButtons = [...document.querySelectorAll("[data-category]")];
+      const searchInput = document.querySelector("#searchInput");
+      const resultCount = document.querySelector("#resultCount");
+      const toast = document.querySelector("#toast");
+      const detail = {
+        category: document.querySelector("#detailCategory"),
+        title: document.querySelector("#detailTitle"),
+        outcome: document.querySelector("#detailOutcome"),
+        tags: document.querySelector("#detailTags"),
+        capabilities: document.querySelector("#detailCapabilities"),
+        preview: document.querySelector("#detailPreview"),
+        prompt: document.querySelector("#promptCode"),
+        tokens: document.querySelector("#detailTokens"),
+        updated: document.querySelector("#detailUpdated"),
+        icon: document.querySelector(".detail-icon"),
+      };
+      let activeCategory = "All";
+      let selected = skills[0];
+
+      const showToast = (message) => {
+        toast.textContent = message;
+        toast.classList.add("show");
+        window.setTimeout(() => toast.classList.remove("show"), 1900);
+      };
+
+      const copyText = async (text) => {
+        if (navigator.clipboard) {
+          await navigator.clipboard.writeText(text);
+          return;
+        }
+        const area = document.createElement("textarea");
+        area.value = text;
+        document.body.append(area);
+        area.select();
+        document.execCommand("copy");
+        area.remove();
+      };
+
+      const renderDetail = (skill) => {
+        selected = skill;
+        detail.category.textContent = skill.category;
+        detail.title.textContent = skill.title;
+        detail.outcome.textContent = skill.outcome;
+        detail.preview.textContent = skill.outcome;
+        detail.prompt.textContent = skill.prompt;
+        detail.tokens.textContent = skill.tokens;
+        detail.updated.textContent = skill.updated;
+        detail.icon.textContent = skill.title.slice(0, 1);
+        detail.tags.innerHTML = skill.tags.map((tag) => `<span>${tag}</span>`).join("");
+        detail.capabilities.innerHTML = skill.capabilities.map((capability) => `<span>${capability}</span>`).join("");
+        cards.forEach((card) => card.classList.toggle("selected", card.dataset.id === skill.id));
+        document.querySelector("#detailPanel").classList.add("open");
+      };
+
+      const filterCards = () => {
+        const query = searchInput.value.trim().toLowerCase();
+        let visible = 0;
+        cards.forEach((card) => {
+          const skill = skills.find((item) => item.id === card.dataset.id);
+          const categoryMatch = activeCategory === "All" || skill.category === activeCategory;
+          const queryMatch = [skill.title, skill.outcome, skill.category, ...skill.tags, ...skill.capabilities]
+            .join(" ")
+            .toLowerCase()
+            .includes(query);
+          const show = categoryMatch && queryMatch;
+          card.hidden = !show;
+          if (show) visible += 1;
+        });
+        resultCount.textContent = `${visible} skill${visible === 1 ? "" : "s"} for Grok Bot`;
+      };
+
+      cards.forEach((card) => {
+        const choose = () => renderDetail(skills.find((skill) => skill.id === card.dataset.id));
+        card.addEventListener("click", choose);
+        card.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            choose();
+          }
+        });
+      });
+
+      categoryButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          activeCategory = button.dataset.category;
+          categoryButtons.forEach((item) => item.classList.toggle("active", item.dataset.category === activeCategory));
+          filterCards();
+        });
+      });
+
+      searchInput.addEventListener("input", filterCards);
+      document.addEventListener("keydown", (event) => {
+        if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+          event.preventDefault();
+          searchInput.focus();
+        }
+      });
+
+      document.querySelector("#copySkill").addEventListener("click", async () => {
+        await copyText(selected.prompt);
+        showToast("Skill copied to clipboard");
+      });
+      document.querySelector("#miniCopy").addEventListener("click", async () => {
+        await copyText(selected.prompt);
+        showToast("Skill copied to clipboard");
+      });
+      document.querySelector("#tryGrok").addEventListener("click", async () => {
+        await copyText(selected.prompt);
+        showToast("Copied. Paste it into Grok.");
+        window.open("https://grok.com/", "_blank", "noopener,noreferrer");
+      });
+      document.querySelector("#closeDetail").addEventListener("click", () => {
+        document.querySelector("#detailPanel").classList.remove("open");
+      });
+    </script>
+  </body>
+</html>

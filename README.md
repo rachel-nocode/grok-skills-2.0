@@ -1,14 +1,27 @@
 # Grok Skills 2.0
 
-A public giveaway pack of **12 action skills** for Grok Bot. These are paste-ready prompts that make Grok Bot do something: build a plugin, apply to a job, QA a live URL, ship store copy, or farm grunt work to a cheaper model.
-
-This is the 2.0 action-skill pack. The previous think/write pack lives at [skills-4-grok](https://github.com/rachel-nocode/skills-4-grok).
+A Ko-fi-ready giveaway pack of **copy-paste Grok Bot skills**. Teach the Bot once. Reuse it. Every new skill is ask-first: it drafts the work, then stops before send, post, buy, delete, or publish.
 
 ## What it is
 
-Grok Skills 2.0 is an action-skill giveaway pack plus a tiny static marketplace. Open a skill, copy the prompt, paste it into Grok or Grok Bot. No leftover 1.0 think/write skill names.
+22 paste-ready skills plus a tiny static marketplace. Open a skill, copy the prompt, paste it into Grok Bot, then say:
 
-## How to run
+> Save this as a skill named [Name]. Ask me before you send, post, buy, delete, or publish.
+
+Next time, type `/` or say the skill name. No leftover 1.0 think/write skill names.
+
+The previous think/write pack lives at [skills-4-grok](https://github.com/rachel-nocode/skills-4-grok).
+
+## How to add a skill to Grok Bot
+
+1. In the marketplace, click a skill, then **Copy Skill**.
+2. Paste it into Grok Bot (or https://grok.com/).
+3. Tell the Bot to save it as a skill with that name.
+4. Or paste the raw file: `skills/<skill-id>/SKILL.md`
+
+Each `SKILL.md` has YAML frontmatter (`name`, `description`) and the verbatim prompt body. The description includes when to use it so Grok Bot can pick the skill up again.
+
+## How to run the marketplace
 
     npm install && npm run dev
 
@@ -17,15 +30,24 @@ Then open the local URL Astro prints (usually http://localhost:4321). Search, fi
     npm run build
     npm run preview
 
-## How to copy a skill into Grok / Grok Bot
+## The 10 Twitter-now skills (August 2026)
 
-1. In the marketplace, click a skill, then hit **Copy Skill** (or the small Copy button on the prompt). Paste it into https://grok.com/ or Grok Bot.
-2. Or click **Try in Grok** -- it copies the prompt and opens https://grok.com/.
-3. Or paste the raw file from this repo: skills/<skill-id>/SKILL.md
+Pulled from what people are actually running: xAI's Aug 26 "Jobs Bots are doing today" list, the official [Grok Bot use cases](https://docs.x.ai/grok-bot/use-cases), and the launch-week threads (inbox first, then sales, then a chief-of-staff brief).
 
-Each SKILL.md has YAML frontmatter (name, description) and the verbatim prompt body.
+- skills/inbox-manager/SKILL.md -- Inbox Manager -- Inbox
+- skills/sales-prospector/SKILL.md -- Sales Prospector -- Sales
+- skills/digital-declutter/SKILL.md -- Digital Declutterer -- Ops
+- skills/customer-support/SKILL.md -- Customer Support -- Ops
+- skills/office-manager/SKILL.md -- Office Manager -- Ops
+- skills/meeting-stand-in/SKILL.md -- Meeting Stand-in -- Ops
+- skills/refunds-manager/SKILL.md -- Refunds Manager -- Money
+- skills/morning-brief/SKILL.md -- Morning Brief -- Inbox
+- skills/website-shipper/SKILL.md -- Website Shipper -- Build
+- skills/talent-scout/SKILL.md -- Talent Scout -- Jobs
 
-## The 12 skills
+Approval on all ten: ask first. If you approve one item, the Bot does only that item.
+
+## The original 12 action skills
 
 - skills/audio-plugin-builder/SKILL.md -- Audio Plugin Builder -- Music
 - skills/vibe-code-tiny-tool/SKILL.md -- Vibe-Code a Tiny Tool -- Build

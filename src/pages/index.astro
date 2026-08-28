@@ -11,7 +11,7 @@ const encodedSkills = JSON.stringify(skills);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="12 action skills Grok Bot can run: build, apply, QA, and ship." />
+    <meta name="description" content={`${skills.length} copy-paste skills you can teach Grok Bot and reuse. Ask-first on send, buy, delete, or publish.`} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <title>Grok Skills 2.0</title>
   </head>
@@ -66,16 +66,17 @@ const encodedSkills = JSON.stringify(skills);
           <p class="rail-label">Built for</p>
           <div class="capability-list">
             <span>Grok Bot</span>
+            <span>Email</span>
+            <span>Calendar</span>
             <span>Code</span>
             <span>Browser</span>
             <span>Files</span>
-            <span>Terminal</span>
             <span>Writing</span>
           </div>
         </section>
 
         <section class="note">
-          <p>Skills here are paste-ready prompts. Try in Grok copies the selected skill, then opens Grok.</p>
+          <p>Copy a skill, paste it into Grok Bot, then say: Save this as a skill. Ask me before you send, post, buy, delete, or publish.</p>
         </section>
       </aside>
 
@@ -83,7 +84,7 @@ const encodedSkills = JSON.stringify(skills);
         <div class="market-head">
           <div>
             <p id="resultCount">{skills.length} skills for Grok Bot</p>
-            <h1>12 action skills Grok Bot can run: build, apply, QA, ship.</h1>
+            <h1>{skills.length} copy-paste skills you can teach Grok Bot and reuse.</h1>
           </div>
           <div class="sort-pill">Sort: Newest</div>
         </div>

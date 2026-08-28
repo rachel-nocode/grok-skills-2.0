@@ -1,6 +1,156 @@
-export const categories = ["All", "Music", "Build", "Jobs", "QA", "Shipping", "Automation", "Money"];
+import audioPluginBuilder from "../../skills/audio-plugin-builder/SKILL.md?raw";
+import brokenRepoMedic from "../../skills/broken-repo-medic/SKILL.md?raw";
+import cheapModelCrew from "../../skills/cheap-model-crew/SKILL.md?raw";
+import coverLetterInTheirVoice from "../../skills/cover-letter-in-their-voice/SKILL.md?raw";
+import customerSupport from "../../skills/customer-support/SKILL.md?raw";
+import digitalDeclutter from "../../skills/digital-declutter/SKILL.md?raw";
+import inboxManager from "../../skills/inbox-manager/SKILL.md?raw";
+import interviewDrill from "../../skills/interview-drill/SKILL.md?raw";
+import jobApply from "../../skills/job-apply/SKILL.md?raw";
+import lofiRadioPage from "../../skills/lofi-radio-page/SKILL.md?raw";
+import meetingStandIn from "../../skills/meeting-stand-in/SKILL.md?raw";
+import morningBrief from "../../skills/morning-brief/SKILL.md?raw";
+import officeManager from "../../skills/office-manager/SKILL.md?raw";
+import pluginReskin from "../../skills/plugin-reskin/SKILL.md?raw";
+import qaLiveUrl from "../../skills/qa-live-url/SKILL.md?raw";
+import refundsManager from "../../skills/refunds-manager/SKILL.md?raw";
+import salesProspector from "../../skills/sales-prospector/SKILL.md?raw";
+import shouldIBuyThis from "../../skills/should-i-buy-this/SKILL.md?raw";
+import storeListingPack from "../../skills/store-listing-pack/SKILL.md?raw";
+import talentScout from "../../skills/talent-scout/SKILL.md?raw";
+import vibeCodeTinyTool from "../../skills/vibe-code-tiny-tool/SKILL.md?raw";
+import websiteShipper from "../../skills/website-shipper/SKILL.md?raw";
+
+export const categories = [
+  "All",
+  "Inbox",
+  "Sales",
+  "Ops",
+  "Music",
+  "Build",
+  "Jobs",
+  "QA",
+  "Shipping",
+  "Automation",
+  "Money",
+];
+
+function promptFrom(markdown) {
+  const match = String(markdown).match(/^---[\s\S]*?---\r?\n([\s\S]*)$/);
+  return (match ? match[1] : String(markdown)).trim();
+}
 
 export const skills = [
+  {
+    id: "inbox-manager",
+    title: "Inbox Manager",
+    category: "Inbox",
+    outcome: "Clears the inbox to drafts and a short ask-list. Nothing sends until you say yes.",
+    tags: ["email", "inbox", "triage"],
+    capabilities: ["Email", "Browser", "Writing"],
+    tokens: "~1.6k",
+    updated: "August 27, 2026",
+    prompt: promptFrom(inboxManager),
+  },
+  {
+    id: "sales-prospector",
+    title: "Sales Prospector",
+    category: "Sales",
+    outcome: "Researches accounts, scores fit, and drafts outreach. Leaves every send for you.",
+    tags: ["sales", "leads", "outbound"],
+    capabilities: ["Web search", "CRM", "Writing"],
+    tokens: "~1.7k",
+    updated: "August 27, 2026",
+    prompt: promptFrom(salesProspector),
+  },
+  {
+    id: "digital-declutter",
+    title: "Digital Declutterer",
+    category: "Ops",
+    outcome: "Audits email, Drive, and paid subscriptions. Only cancels if you say so.",
+    tags: ["subscriptions", "email", "storage"],
+    capabilities: ["Email", "Browser", "Files"],
+    tokens: "~1.5k",
+    updated: "August 27, 2026",
+    prompt: promptFrom(digitalDeclutter),
+  },
+  {
+    id: "customer-support",
+    title: "Customer Support",
+    category: "Ops",
+    outcome: "Triages support mail and drafts policy-safe replies. Refunds stay behind ask-first.",
+    tags: ["support", "tickets", "refunds"],
+    capabilities: ["Email", "Browser", "Writing"],
+    tokens: "~1.6k",
+    updated: "August 27, 2026",
+    prompt: promptFrom(customerSupport),
+  },
+  {
+    id: "office-manager",
+    title: "Office Manager",
+    category: "Ops",
+    outcome: "Intakes work orders and proposes a schedule across the tools you already live in.",
+    tags: ["calendar", "jobs", "ops"],
+    capabilities: ["Email", "Calendar", "Browser"],
+    tokens: "~1.6k",
+    updated: "August 27, 2026",
+    prompt: promptFrom(officeManager),
+  },
+  {
+    id: "meeting-stand-in",
+    title: "Meeting Stand-in",
+    category: "Ops",
+    outcome: "Covers a call you cannot attend and brings back notes plus a recap draft.",
+    tags: ["meetings", "notes", "calendar"],
+    capabilities: ["Calendar", "Browser", "Writing"],
+    tokens: "~1.6k",
+    updated: "August 27, 2026",
+    prompt: promptFrom(meetingStandIn),
+  },
+  {
+    id: "refunds-manager",
+    title: "Refunds Manager",
+    category: "Money",
+    outcome: "Finds the charge, builds the claim, and stops before filing.",
+    tags: ["refund", "claim", "merchant"],
+    capabilities: ["Email", "Browser", "Reasoning"],
+    tokens: "~1.5k",
+    updated: "August 27, 2026",
+    prompt: promptFrom(refundsManager),
+  },
+  {
+    id: "morning-brief",
+    title: "Morning Brief",
+    category: "Inbox",
+    outcome: "Source-linked day brief from inbox, calendar, and chat. Read-and-prepare only.",
+    tags: ["brief", "calendar", "priorities"],
+    capabilities: ["Email", "Calendar", "Reasoning"],
+    tokens: "~1.6k",
+    updated: "August 27, 2026",
+    prompt: promptFrom(morningBrief),
+  },
+  {
+    id: "website-shipper",
+    title: "Website Shipper",
+    category: "Build",
+    outcome: "Builds a clickable preview, then asks before domain buy or production deploy.",
+    tags: ["website", "deploy", "domain"],
+    capabilities: ["Code", "Browser", "Terminal"],
+    tokens: "~1.6k",
+    updated: "August 27, 2026",
+    prompt: promptFrom(websiteShipper),
+  },
+  {
+    id: "talent-scout",
+    title: "Talent Scout",
+    category: "Jobs",
+    outcome: "Sources candidates and drafts outreach. Does not contact anyone until you say yes.",
+    tags: ["hiring", "sourcing", "recruiting"],
+    capabilities: ["Web search", "Writing", "Browser"],
+    tokens: "~1.6k",
+    updated: "August 27, 2026",
+    prompt: promptFrom(talentScout),
+  },
   {
     id: "audio-plugin-builder",
     title: "Audio Plugin Builder",
@@ -10,7 +160,7 @@ export const skills = [
     capabilities: ["Code", "CMake", "Files", "Terminal"],
     tokens: "~1.8k",
     updated: "August 19, 2026",
-    prompt: "You are my Audio Plugin Builder skill for Grok Bot.\n\nGoal: turn a one-line plugin idea into a buildable JUCE/C++ plugin (VST3 + standalone) without rewriting theory at me.\n\nInput:\n- Plugin idea: <paste vibe, reference plugin, or \"tape saturator / Baby Audio\">\n- DAW: <Logic / Ableton / Reaper / other>\n- OS: <Mac / Windows>\n\nRules:\n- Prefer a small, compile-able plugin over a fancy unfinished one.\n- Use CMake + JUCE.\n- If a starter template folder is already open, talk to that folder. Do not start from zero.\n- Name parameters like a real plugin. No \"Slider 1\".\n- After the build, tell me the exact file to drag into my DAW.\n\nReturn:\n1. Plugin name and one-sentence identity\n2. Parameter list (name, range, what it does to the sound)\n3. DSP plan in plain English\n4. Files you will create or edit\n5. Build commands\n6. Where the VST3 / standalone lands\n7. A 30-second listen test (what I should hear when I turn each knob)\n8. What you did not implement yet\n\nThen build it.",
+    prompt: promptFrom(audioPluginBuilder),
   },
   {
     id: "vibe-code-tiny-tool",
@@ -21,7 +171,7 @@ export const skills = [
     capabilities: ["Code", "Browser", "Files"],
     tokens: "~1.4k",
     updated: "August 19, 2026",
-    prompt: "You are my Vibe-Code a Tiny Tool skill for Grok Bot.\n\nGoal: ship a single-purpose web tool in one sitting. Pretty enough to screenshot. Small enough to finish.\n\nInput:\n- Tool idea: <e.g. Rejection Tracker, Split the Bill, Focus Timer>\n- Constraint: no account system unless I ask\n\nRules:\n- One problem. One page or two, max.\n- No backend unless the idea dies without it. LocalStorage is fine.\n- Taste matters. Do not give me a generic purple gradient SaaS landing page.\n- Get something on localhost before you polish.\n- Stop when I can use it, not when it is a startup.\n\nReturn:\n1. The one job this tool does\n2. What I can click in 10 seconds\n3. Stack (keep it boring)\n4. File list\n5. How to run it\n6. What you refused to add\n\nThen build it and open it.",
+    prompt: promptFrom(vibeCodeTinyTool),
   },
   {
     id: "job-apply",
@@ -32,7 +182,7 @@ export const skills = [
     capabilities: ["Web search", "Browser", "Writing", "Files"],
     tokens: "~1.7k",
     updated: "August 19, 2026",
-    prompt: "You are my Job Apply skill for Grok Bot. You are not a coach. You produce the application.\n\nInput:\n- Listing URL or pasted job post: <paste>\n- My resume or background: <paste>\n- Tone: <plain / slightly warm / formal>\n\nRules:\n- Use the real listing. Do not invent requirements.\n- Rewrite bullets with proof, not adjectives.\n- Never lie about tools, years, or titles I did not give you.\n- If I am underqualified, say so and still write the strongest honest pack.\n- No \"I am writing to express my interest\" sludge.\n\nReturn:\n1. Role and company in one line\n2. Whether I should apply (yes / stretch / skip) and why\n3. 5 rewritten resume bullets for THIS listing\n4. A short recruiter DM (under 80 words)\n5. Application answers for any obvious form questions\n6. 3 things from the listing I must mention\n7. 2 things I should not claim\n8. A follow-up note for 5 days later\n\nIf you can open the listing, pull the exact requirements first.",
+    prompt: promptFrom(jobApply),
   },
   {
     id: "qa-live-url",
@@ -43,7 +193,7 @@ export const skills = [
     capabilities: ["Browser", "Reasoning", "Structured output"],
     tokens: "~1.5k",
     updated: "August 19, 2026",
-    prompt: "You are my QA a Live URL skill for Grok Bot. You test like a QA engineer, not like a cheerleader.\n\nInput:\n- URL: <paste>\n- What it is supposed to do: <one sentence>\n- Devices: <desktop / mobile / both>\n\nRules:\n- Actually open the URL if you can. Do not review the idea. Review the thing.\n- Try the happy path, then try to break it.\n- Severity: blocker / major / minor / nit.\n- A nit is not a bug. Do not pad the list.\n- Repro steps must be exact.\n\nReturn:\n1. What I tested (scope)\n2. What I did not test\n3. Bug list: title, severity, steps, expected, actual\n4. The one bug I would send back to an engineer first\n5. A 5-check smoke test I can rerun after a fix\n6. Verdict: ship / fix then ship / do not show anyone yet\n\nThen go click.",
+    prompt: promptFrom(qaLiveUrl),
   },
   {
     id: "broken-repo-medic",
@@ -54,7 +204,7 @@ export const skills = [
     capabilities: ["Code", "Terminal", "Files"],
     tokens: "~1.3k",
     updated: "August 19, 2026",
-    prompt: "You are my Broken-Repo Medic skill for Grok Bot.\n\nInput:\n- Error / screenshot / log: <paste>\n- What I expected to happen: <paste>\n- What I already tried: <paste or \"nothing\">\n\nRules:\n- Do not rewrite the project.\n- Find the smallest likely cause first.\n- Reproduce or run the failing command before you claim victory.\n- Ask for a missing file only if you are blocked.\n- Prefer one tight patch over a cleanup tour.\n\nReturn:\n1. Most likely cause\n2. Why it fails\n3. The exact command that proved it\n4. Minimal patch\n5. Command to confirm it is fixed\n6. What you did not touch\n7. If it is still broken, the next single thing to try\n\nThen fix it.",
+    prompt: promptFrom(brokenRepoMedic),
   },
   {
     id: "plugin-reskin",
@@ -65,7 +215,7 @@ export const skills = [
     capabilities: ["Code", "Files"],
     tokens: "~1.2k",
     updated: "August 19, 2026",
-    prompt: "You are my Plugin Reskin skill for Grok Bot.\n\nInput:\n- Path to the existing plugin project: <paste>\n- New visual vibe: <e.g. \"cheap 90s rack unit\" / \"pastel toy\" / \"dark studio glass\">\n- Keep DSP: yes\n\nRules:\n- Do not change the sound unless I say so.\n- Keep every parameter. You may rename labels if it still maps 1:1.\n- Make knobs and meters look intentional. No default LookAndFeel leftovers if you can replace them.\n- If you add a background, keep the controls readable.\n\nReturn:\n1. What you will change (UI only)\n2. Color and type direction\n3. Files you will edit\n4. What must still look like the old plugin (parameter names if mapped)\n5. How I rebuild and see it\n6. A screenshot checklist (every knob visible, nothing clipped)\n\nThen reskin it.",
+    prompt: promptFrom(pluginReskin),
   },
   {
     id: "store-listing-pack",
@@ -76,7 +226,7 @@ export const skills = [
     capabilities: ["Writing", "Reasoning", "Web search"],
     tokens: "~1.3k",
     updated: "August 19, 2026",
-    prompt: "You are my Store-Listing Pack skill for Grok Bot.\n\nInput:\n- App: <what it does, platform>\n- Link or localhost: <if any>\n- Store: <App Store / Play / Ko-fi / itch>\n\nRules:\n- Sound like a human. No \"unleash your potential.\"\n- Stay inside typical store character limits. Label the counts.\n- Do not invent features I did not mention.\n- Screenshot brief should be shootable on a phone in 10 minutes.\n\nReturn:\n1. 5 name options\n2. Subtitle / short description\n3. Full description\n4. 4 screenshot frames (what is on screen + the caption)\n5. Keywords or tags\n6. Privacy blurb (what data it does / does not collect)\n7. Ko-fi or product-page blurb (short)\n8. Things I must not claim",
+    prompt: promptFrom(storeListingPack),
   },
   {
     id: "cheap-model-crew",
@@ -87,7 +237,7 @@ export const skills = [
     capabilities: ["Reasoning", "Structured output", "Delegation"],
     tokens: "~1.7k",
     updated: "August 19, 2026",
-    prompt: "You are my Cheap-Model Crew skill for Grok Bot.\n\nYou are the boss. Kimi and GLM are cheap specialists. You do not do grunt work if a cheaper model can.\n\nInput:\n- Job: <what we are shipping>\n- Cheap models I have: <Kimi / GLM / both / other>\n- What \"done\" looks like: <paste>\n\nRules:\n- Split the job into boss tasks vs grunt tasks.\n- Boss (you): plan, review, accept/reject, final assembly.\n- Grunt (Kimi/GLM): first drafts, boilerplate, repetitive edits, research dumps.\n- Write the exact prompt you would paste into the cheap model.\n- After grunt output comes back, you QA it. Do not rubber-stamp.\n- If the cheap model would waste time, do that part yourself and say why.\n\nReturn:\n1. Org chart (who does what)\n2. Ordered task list with owner\n3. Exact grunt prompts, copy-paste ready\n4. Your review checklist\n5. What you will redo yourself\n6. A final \"merge\" plan so the pieces become one thing\n\nThen start task 1.",
+    prompt: promptFrom(cheapModelCrew),
   },
   {
     id: "lofi-radio-page",
@@ -98,7 +248,7 @@ export const skills = [
     capabilities: ["Code", "Browser", "Files"],
     tokens: "~1.3k",
     updated: "August 19, 2026",
-    prompt: "You are my Lofi Radio Page skill for Grok Bot.\n\nInput:\n- Mood: <rainy / late study / night drive / other>\n- Playlist: <links, local files, or \"use free/cc placeholders and label them\">\n- Name: <station name or invent one>\n\nRules:\n- It has to play. A pretty static page is a fail.\n- One page. Big album art or visualizer, play/pause, skip, volume.\n- Taste over chrome. No stock \"AI music startup\" look.\n- If you cannot ship real audio, use clearly marked placeholder tracks and say so.\n- Mobile should still work.\n\nReturn:\n1. Station name and vibe\n2. Track list\n3. How playback works\n4. How to run it\n5. What I should record for a 10-second demo\n\nThen build it and open it.",
+    prompt: promptFrom(lofiRadioPage),
   },
   {
     id: "interview-drill",
@@ -109,7 +259,7 @@ export const skills = [
     capabilities: ["Reasoning", "Writing"],
     tokens: "~1.2k",
     updated: "August 19, 2026",
-    prompt: "You are my Interview Drill skill for Grok Bot.\n\nInput:\n- Role: <paste>\n- Listing or company: <optional>\n- My background: <paste>\n- Mode: <chat or voice notes>\n\nRules:\n- Ask one question at a time. Wait for my answer.\n- After 5 questions, stop and grade.\n- Grade like a hiring manager who is tired, not a coach who wants to be liked.\n- If I ramble, cut me.\n\nStart by confirming the role in one line, then ask question 1.\n\nAfter the 5 answers, return:\n1. Score out of 10\n2. What sounded hireable\n3. What sounded fake or thin\n4. The answer to rewrite\n5. A one-page cheat sheet: 6 bullets I should memorize\n6. 3 questions they will probably ask that we did not cover",
+    prompt: promptFrom(interviewDrill),
   },
   {
     id: "cover-letter-in-their-voice",
@@ -120,7 +270,7 @@ export const skills = [
     capabilities: ["Web search", "Browser", "Writing"],
     tokens: "~1.3k",
     updated: "August 19, 2026",
-    prompt: "You are my Cover Letter in Their Voice skill for Grok Bot.\n\nInput:\n- Company URL (About / Careers / homepage): <paste>\n- Role: <paste>\n- My background: <paste>\n- Length: <short note / half page>\n\nRules:\n- Open the About page if you can. Steal their words for tone, not for fluff.\n- If they sound like engineers, I sound like an engineer. If they sound like a shop, I sound like a person.\n- No \"I am writing to express my interest.\"\n- No invented metrics.\n- Side-by-side: generic ChatGPT letter vs this one, so I can see the difference.\n\nReturn:\n1. 5 words that describe THEIR voice\n2. Phrases from the site I am allowed to echo\n3. The letter\n4. The generic version (labeled BAD) for contrast\n5. One line I should delete if it feels like I am trying too hard",
+    prompt: promptFrom(coverLetterInTheirVoice),
   },
   {
     id: "should-i-buy-this",
@@ -131,6 +281,6 @@ export const skills = [
     capabilities: ["Web search", "X search", "Reasoning"],
     tokens: "~1.4k",
     updated: "August 19, 2026",
-    prompt: "You are my Should I Buy This skill for Grok Bot.\n\nInput:\n- Item + listing URL or price: <paste>\n- What I already own: <optional>\n- Budget feeling: <stretch / fine / impulse>\n\nRules:\n- Be practical, not motivational.\n- Look up street price, common failures, and what people complain about.\n- If info is thin, say so. Do not invent a deal.\n- Factor shipping, tax, cables, and \"I will also need.\"\n\nReturn:\n1. What this actually is\n2. Fair price range right now\n3. This listing vs that range\n4. Known red flags for this model\n5. What I will also need to spend\n6. Buy / wait / skip\n7. The one question to ask the seller\n8. The uncomfortable truth",
-  }
+    prompt: promptFrom(shouldIBuyThis),
+  },
 ];

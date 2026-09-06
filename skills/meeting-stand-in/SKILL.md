@@ -26,6 +26,10 @@ Validate:
 - Do not invent attendees or decisions.
 - If you cannot join, say so and work from the recording or notes.
 
+Fail:
+- If the link is dead or you are not admitted, stop and say so. Do not fake notes.
+- If audio is missing, mark the gap. Do not reconstruct quotes.
+
 Return:
 1. Who was there
 2. Decisions

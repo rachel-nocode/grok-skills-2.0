@@ -22,8 +22,12 @@ Sequence:
 4. Stop. Ask before you submit, accept a coupon, or start a chargeback.
 
 Validate:
-- Amount, date, and order id must match a source.
+- Amount, date, and order id must match a source from this run.
 - If the window looks expired, say so before we file.
+
+Fail:
+- If you cannot find the charge, stop. Do not file from a guessed amount.
+- If the merchant path is unclear, list the pages you opened. Do not invent a form.
 
 Return:
 1. What the charge actually is

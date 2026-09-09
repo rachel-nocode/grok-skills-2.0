@@ -6,7 +6,7 @@ Skills say **how**. Routines say **when**. Templates are the shareable Bot (iden
 
 ## What it is
 
-34 paste-ready skills, 10 routines, plus a tiny static marketplace. Open a card, copy the prompt, paste it into Grok Bot, then say:
+65 paste-ready skills, 10 routines, plus a tiny static marketplace. Open a card, copy the prompt, paste it into Grok Bot, then say:
 
 > Save this as a skill named [Name]. Ask me before you send, post, buy, delete, or publish.
 
@@ -123,6 +123,51 @@ Same jobs as 2.0 launch. Now they use the same when / input / access / sequence 
 - skills/interview-drill/SKILL.md -- Interview Drill -- Jobs
 - skills/cover-letter-in-their-voice/SKILL.md -- Cover Letter in Their Voice -- Jobs
 - skills/should-i-buy-this/SKILL.md -- Should I Buy This -- Money
+
+## Official marketplace gaps (x.ai/bot/marketplace)
+
+The public Grok Bot marketplace is 9 categories. We already covered outbound, talent sourcing, X brief, paid media, expenses, and chief-of-staff. These jobs were on the marketplace and missing here. Original prompts, same ask-first rules. Skipped hardware/home (robots, plants), health, and vendor-locked phone/event stacks.
+
+### Growth / marketing
+- skills/seo-aeo-desk/SKILL.md -- SEO & AEO Desk -- Growth
+- skills/ai-search-visibility/SKILL.md -- AI Search Visibility -- Growth
+- skills/clip-desk/SKILL.md -- Clip Desk -- Growth
+- skills/copy-humanizer/SKILL.md -- Copy Humanizer -- Growth
+
+### Design
+- skills/alt-text/SKILL.md -- Alt Text -- Design
+- skills/figma-spec/SKILL.md -- Figma Spec -- Design
+- skills/design-critique/SKILL.md -- Design Critique -- Design
+- skills/visual-style-guide/SKILL.md -- Visual Style Guide -- Design
+
+### Sales
+- skills/loop-closer/SKILL.md -- Loop Closer -- Sales
+- skills/call-coach/SKILL.md -- Call Coach -- Sales
+- skills/recap-deck/SKILL.md -- Recap Deck -- Sales
+- skills/pitch-coach/SKILL.md -- Pitch Coach -- Sales
+- skills/pipeline-pulse/SKILL.md -- Pipeline Pulse -- Sales
+- skills/warm-intros/SKILL.md -- Warm Intros -- Sales
+- skills/customer-proof/SKILL.md -- Customer Proof -- Sales
+- skills/account-brief/SKILL.md -- Account Brief -- Sales
+- skills/inbound-leads/SKILL.md -- Inbound Leads -- Sales
+
+### Jobs / build / research
+- skills/interview-loop/SKILL.md -- Interview Loop -- Jobs
+- skills/repo-audit/SKILL.md -- Repo Audit -- Build
+- skills/api-plugin/SKILL.md -- API Plugin -- Build
+- skills/site-audit/SKILL.md -- Site Audit -- QA
+- skills/fact-check/SKILL.md -- Fact Check -- Research
+- skills/competitor-watch/SKILL.md -- Competitor Watch -- Research
+- skills/social-listening/SKILL.md -- Social Listening -- Research
+- skills/idea-stress-test/SKILL.md -- Idea Stress Test -- Research
+
+### Money / ops / automation
+- skills/saas-spend/SKILL.md -- SaaS Spend -- Money
+- skills/card-rewards/SKILL.md -- Card Rewards -- Money
+- skills/event-requests/SKILL.md -- Event Requests -- Ops
+- skills/event-producer/SKILL.md -- Event Producer -- Ops
+- skills/docs-qa/SKILL.md -- Docs Q&A -- Ops
+- skills/bot-org/SKILL.md -- Bot Org -- Automation
 
 ## Routines
 

@@ -99,14 +99,19 @@ function promptFrom(markdown) {
 
 function tokensFor(markdown) {
   const words = promptFrom(markdown).split(/\s+/).filter(Boolean).length;
-  const approx = Math.max(1, Math.round((words * 1.3) / 100) / 10);
+  const approx = Math.max(0.1, Math.round((words * 1.3) / 100) / 10);
   return `~${approx.toFixed(1)}k`;
+}
+
+function updatedTime(value) {
+  const time = Date.parse(value);
+  return Number.isFinite(time) ? time : 0;
 }
 
 const updated = "September 6, 2026";
 const marketplace = "September 9, 2026";
 
-export const skills = [
+const catalog = [
   {
     id: "inbox-manager",
     title: "Inbox Manager",
@@ -1008,3 +1013,9 @@ export const skills = [
     prompt: promptFrom(docsQa),
   },
 ];
+
+export const skills = catalog.sort((a, b) => {
+  const byDate = updatedTime(b.updated) - updatedTime(a.updated);
+  if (byDate !== 0) return byDate;
+  return a.title.localeCompare(b.title);
+});

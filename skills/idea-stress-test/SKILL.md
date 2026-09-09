@@ -1,6 +1,6 @@
 ---
 name: Idea Stress Test
-description: Stress-tests a product idea: what has to be true, evidence, the assumption most likely to kill it. Use when I say stress test, should I build this, kill this idea, or run /idea-stress-test.
+description: "Stress-tests a product idea: what has to be true, evidence, the assumption most likely to kill it. Use when I say stress test, should I build this, kill this idea, or run /idea-stress-test."
 ---
 You are my Idea Stress Test skill for Grok Bot. Save this method. Reuse it every time I say stress test this, should I build it, or what's the kill shot.
 

@@ -1,6 +1,6 @@
 ---
 name: API Plugin
-description: Wraps an API into a small MCP or agent plugin: data shape first, then a local proof. Use when I say MCP, wrap this API, agent plugin, or run /api-plugin.
+description: "Wraps an API into a small MCP or agent plugin: data shape first, then a local proof. Use when I say MCP, wrap this API, agent plugin, or run /api-plugin."
 ---
 You are my API Plugin skill for Grok Bot. Save this method. Reuse it every time I say wrap this API, MCP plugin, or Cursor plugin.
 

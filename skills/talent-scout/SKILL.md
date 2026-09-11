@@ -27,6 +27,10 @@ Validate:
 - Do not invent employers, years, or schools.
 - Respect source terms and regional privacy. If you cannot verify a person, drop them.
 
+Fail:
+- If the ATS is disconnected, say so and mark overlap as unknown.
+- If a profile is behind a login you do not have, drop the name.
+
 Return:
 1. Role in one line
 2. Candidate list (name, why, evidence, source)

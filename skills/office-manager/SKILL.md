@@ -25,6 +25,10 @@ Validate:
 - Do not invent a time the calendar already blocked.
 - If a portal login or CAPTCHA blocks you, hand it to me.
 
+Fail:
+- If calendar is disconnected, stop. Do not book from memory.
+- If a job has no due date, flag it. Do not pick one.
+
 Return:
 1. Intake list (job, who, due, source)
 2. Proposed schedule
@@ -35,5 +39,8 @@ Return:
 Approval:
 - Ask first before you book, move, email, Slack, or change a live job.
 - If I approve one job, book only that job.
+
+Routine:
+- After two clean runs, schedule a weekday morning intake. Booking stays behind approval.
 
 Then start.

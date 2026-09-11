@@ -11,7 +11,7 @@ const encodedSkills = JSON.stringify(skills);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={`${skills.length} copy-paste skills you can teach Grok Bot and reuse. Ask-first on send, buy, delete, or publish.`} />
+    <meta name="description" content={`${skills.length} copy-paste Grok Bot skills and routines. Ask-first on send, buy, delete, or publish. Share as a template only after secrets are stripped.`} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <title>Grok Skills 2.0</title>
   </head>
@@ -54,7 +54,7 @@ const encodedSkills = JSON.stringify(skills);
               const count = category === "All" ? skills.length : skills.filter((skill) => skill.category === category).length;
               return (
                 <button class:list={["rail-item", category === "All" && "active"]} data-category={category}>
-                  <span>{category} Skills</span>
+                  <span>{category}</span>
                   <strong>{count}</strong>
                 </button>
               );
@@ -66,25 +66,27 @@ const encodedSkills = JSON.stringify(skills);
           <p class="rail-label">Built for</p>
           <div class="capability-list">
             <span>Grok Bot</span>
+            <span>Skills</span>
+            <span>Routines</span>
+            <span>Templates</span>
+            <span>Design</span>
             <span>Email</span>
             <span>Calendar</span>
             <span>Code</span>
             <span>Browser</span>
-            <span>Files</span>
-            <span>Writing</span>
           </div>
         </section>
 
         <section class="note">
-          <p>Copy a skill, paste it into Grok Bot, then say: Save this as a skill. Ask me before you send, post, buy, delete, or publish.</p>
+          <p>Skill = how. Routine = when. Copy, paste into Grok Bot, then save it. Ask before send, post, buy, delete, or publish. Strip secrets before you share a template.</p>
         </section>
       </aside>
 
       <section class="market">
         <div class="market-head">
           <div>
-            <p id="resultCount">{skills.length} skills for Grok Bot</p>
-            <h1>{skills.length} copy-paste skills you can teach Grok Bot and reuse.</h1>
+            <p id="resultCount">{skills.length} skills and routines for Grok Bot</p>
+            <h1>{skills.length} copy-paste skills and routines you can teach Grok Bot and reuse.</h1>
           </div>
           <div class="sort-pill">Sort: Newest</div>
         </div>
@@ -101,6 +103,7 @@ const encodedSkills = JSON.stringify(skills);
                 </span>
               </div>
               <h2>{skill.title}</h2>
+              <p class="kind-label">{skill.kind}</p>
               <p>{skill.outcome}</p>
               <div class="tags">
                 {skill.tags.map((tag) => <span>{tag}</span>)}
@@ -120,6 +123,7 @@ const encodedSkills = JSON.stringify(skills);
           <span class="detail-icon">{selectedSkill.title.slice(0, 1)}</span>
           <div>
             <div class="detail-kicker">
+              <span id="detailKind">{selectedSkill.kind}</span>
               <span id="detailCategory">{selectedSkill.category}</span>
               <span>Grok Bot</span>
             </div>
@@ -143,7 +147,7 @@ const encodedSkills = JSON.stringify(skills);
 
         <section class="prompt-block">
           <div class="prompt-head">
-            <p class="section-label">Skill prompt</p>
+            <p class="section-label" id="promptLabel">Skill prompt</p>
             <button id="miniCopy" aria-label="Copy skill prompt">Copy</button>
           </div>
           <pre><code id="promptCode">{selectedSkill.prompt}</code></pre>
@@ -182,6 +186,7 @@ const encodedSkills = JSON.stringify(skills);
       const resultCount = document.querySelector("#resultCount");
       const toast = document.querySelector("#toast");
       const detail = {
+        kind: document.querySelector("#detailKind"),
         category: document.querySelector("#detailCategory"),
         title: document.querySelector("#detailTitle"),
         outcome: document.querySelector("#detailOutcome"),
@@ -217,9 +222,12 @@ const encodedSkills = JSON.stringify(skills);
 
       const renderDetail = (skill) => {
         selected = skill;
+        detail.kind.textContent = skill.kind;
         detail.category.textContent = skill.category;
         detail.title.textContent = skill.title;
         detail.outcome.textContent = skill.outcome;
+        document.querySelector("#promptLabel").textContent = skill.kind === "Routine" ? "Routine prompt" : "Skill prompt";
+        document.querySelector("#copySkill").textContent = skill.kind === "Routine" ? "Copy Routine" : "Copy Skill";
         detail.preview.textContent = skill.outcome;
         detail.prompt.textContent = skill.prompt;
         detail.tokens.textContent = skill.tokens;
@@ -237,7 +245,7 @@ const encodedSkills = JSON.stringify(skills);
         cards.forEach((card) => {
           const skill = skills.find((item) => item.id === card.dataset.id);
           const categoryMatch = activeCategory === "All" || skill.category === activeCategory;
-          const queryMatch = [skill.title, skill.outcome, skill.category, ...skill.tags, ...skill.capabilities]
+          const queryMatch = [skill.title, skill.outcome, skill.category, skill.kind, ...skill.tags, ...skill.capabilities]
             .join(" ")
             .toLowerCase()
             .includes(query);
@@ -245,7 +253,7 @@ const encodedSkills = JSON.stringify(skills);
           card.hidden = !show;
           if (show) visible += 1;
         });
-        resultCount.textContent = `${visible} skill${visible === 1 ? "" : "s"} for Grok Bot`;
+        resultCount.textContent = `${visible} item${visible === 1 ? "" : "s"} for Grok Bot`;
       };
 
       cards.forEach((card) => {
@@ -277,15 +285,15 @@ const encodedSkills = JSON.stringify(skills);
 
       document.querySelector("#copySkill").addEventListener("click", async () => {
         await copyText(selected.prompt);
-        showToast("Skill copied to clipboard");
+        showToast(`${selected.kind} copied to clipboard`);
       });
       document.querySelector("#miniCopy").addEventListener("click", async () => {
         await copyText(selected.prompt);
-        showToast("Skill copied to clipboard");
+        showToast(`${selected.kind} copied to clipboard`);
       });
       document.querySelector("#tryGrok").addEventListener("click", async () => {
         await copyText(selected.prompt);
-        showToast("Copied. Paste it into Grok.");
+        showToast("Copied. Paste it into Grok Bot.");
         window.open("https://grok.com/", "_blank", "noopener,noreferrer");
       });
       document.querySelector("#closeDetail").addEventListener("click", () => {

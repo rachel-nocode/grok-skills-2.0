@@ -26,6 +26,10 @@ Validate:
 - Preview must load. A zip of files with no URL is a fail.
 - Do not invent analytics, payments, or accounts I did not ask for.
 
+Fail:
+- If the preview URL 404s, fix it before you talk deploy.
+- If the host login is missing, leave production alone.
+
 Return:
 1. What the site does in one line
 2. File list

@@ -63,6 +63,16 @@ import eventRequests from "../../skills/event-requests/SKILL.md?raw";
 import eventProducer from "../../skills/event-producer/SKILL.md?raw";
 import botOrg from "../../skills/bot-org/SKILL.md?raw";
 import docsQa from "../../skills/docs-qa/SKILL.md?raw";
+import tradeStudy from "../../skills/trade-study/SKILL.md?raw";
+import fmeaDesk from "../../skills/fmea-desk/SKILL.md?raw";
+import testReview from "../../skills/test-review/SKILL.md?raw";
+import interfaceControl from "../../skills/interface-control/SKILL.md?raw";
+import telemetryForensic from "../../skills/telemetry-forensic/SKILL.md?raw";
+import shopTraveler from "../../skills/shop-traveler/SKILL.md?raw";
+import loopCompactor from "../../skills/loop-compactor/SKILL.md?raw";
+import simVsMeasure from "../../skills/sim-vs-measure/SKILL.md?raw";
+import hardwareReview from "../../skills/hardware-review/SKILL.md?raw";
+import bakeoff from "../../skills/bakeoff/SKILL.md?raw";
 import weekdayMorningBrief from "../../workflows/weekday-morning-brief/WORKFLOW.md?raw";
 import nightlyOutboundResearch from "../../workflows/nightly-outbound-research/WORKFLOW.md?raw";
 import weeklyAccountHealth from "../../workflows/weekly-account-health/WORKFLOW.md?raw";
@@ -110,6 +120,7 @@ function updatedTime(value) {
 
 const updated = "September 6, 2026";
 const marketplace = "September 9, 2026";
+const grok47 = "September 11, 2026";
 
 const catalog = [
   {
@@ -1011,6 +1022,126 @@ const catalog = [
     tokens: tokensFor(docsQa),
     updated: marketplace,
     prompt: promptFrom(docsQa),
+  },
+  {
+    id: "trade-study",
+    title: "Trade Study",
+    kind: "Skill",
+    category: "Build",
+    outcome: "Scores real options on mass, cost, schedule, and risk. Empty cells stay empty.",
+    tags: ["engineering", "trades", "decisions"],
+    capabilities: ["Reasoning", "Files", "Writing"],
+    tokens: tokensFor(tradeStudy),
+    updated: grok47,
+    prompt: promptFrom(tradeStudy),
+  },
+  {
+    id: "fmea-desk",
+    title: "FMEA Desk",
+    kind: "Skill",
+    category: "QA",
+    outcome: "Failure-mode table from a real design or incident. Observed vs hypothetical.",
+    tags: ["fmea", "risk", "hardware"],
+    capabilities: ["Reasoning", "Files", "Writing"],
+    tokens: tokensFor(fmeaDesk),
+    updated: grok47,
+    prompt: promptFrom(fmeaDesk),
+  },
+  {
+    id: "test-review",
+    title: "Test Review",
+    kind: "Skill",
+    category: "QA",
+    outcome: "Go, no-go, or cannot-say from a test pack. Missing sensors are not a pass.",
+    tags: ["test", "anomaly", "go-nogo"],
+    capabilities: ["Files", "Reasoning", "Writing"],
+    tokens: tokensFor(testReview),
+    updated: grok47,
+    prompt: promptFrom(testReview),
+  },
+  {
+    id: "interface-control",
+    title: "Interface Control",
+    kind: "Skill",
+    category: "Build",
+    outcome: "The contract between two subsystems. Open pins stay open.",
+    tags: ["icd", "interfaces", "systems"],
+    capabilities: ["Files", "Reasoning", "Writing"],
+    tokens: tokensFor(interfaceControl),
+    updated: grok47,
+    prompt: promptFrom(interfaceControl),
+  },
+  {
+    id: "telemetry-forensic",
+    title: "Telemetry Forensic",
+    kind: "Skill",
+    category: "QA",
+    outcome: "First real fault in a log dump, with timestamps. Loudest alarm is not the story.",
+    tags: ["logs", "telemetry", "rca"],
+    capabilities: ["Files", "Reasoning", "Code"],
+    tokens: tokensFor(telemetryForensic),
+    updated: grok47,
+    prompt: promptFrom(telemetryForensic),
+  },
+  {
+    id: "shop-traveler",
+    title: "Shop Traveler",
+    kind: "Skill",
+    category: "Ops",
+    outcome: "A build packet with inspections and photo proofs. No invented torque.",
+    tags: ["manufacturing", "traveler", "inspection"],
+    capabilities: ["Files", "Writing", "Reasoning"],
+    tokens: tokensFor(shopTraveler),
+    updated: grok47,
+    prompt: promptFrom(shopTraveler),
+  },
+  {
+    id: "loop-compactor",
+    title: "Loop Compactor",
+    kind: "Skill",
+    category: "Automation",
+    outcome: "Shrinks a long agent thread into cited evidence and a paste-ready handoff.",
+    tags: ["context", "tokens", "handoff"],
+    capabilities: ["Reasoning", "Writing", "Files"],
+    tokens: tokensFor(loopCompactor),
+    updated: grok47,
+    prompt: promptFrom(loopCompactor),
+  },
+  {
+    id: "sim-vs-measure",
+    title: "Sim vs Measure",
+    kind: "Skill",
+    category: "Research",
+    outcome: "Residual between model and measurement, plus the assumption that would cause it.",
+    tags: ["simulation", "residuals", "validation"],
+    capabilities: ["Files", "Reasoning", "Code"],
+    tokens: tokensFor(simVsMeasure),
+    updated: grok47,
+    prompt: promptFrom(simVsMeasure),
+  },
+  {
+    id: "hardware-review",
+    title: "Hardware Review",
+    kind: "Skill",
+    category: "Build",
+    outcome: "Ranked findings from drawings, BOM, and photos. Photo vs drawing clashes stay.",
+    tags: ["hardware", "review", "bom"],
+    capabilities: ["Files", "Reasoning", "Writing"],
+    tokens: tokensFor(hardwareReview),
+    updated: grok47,
+    prompt: promptFrom(hardwareReview),
+  },
+  {
+    id: "bakeoff",
+    title: "Bakeoff",
+    kind: "Skill",
+    category: "Automation",
+    outcome: "Same held-out suite on two model ids. Tokens per success. No silent reroute.",
+    tags: ["eval", "models", "4.7"],
+    capabilities: ["Code", "Reasoning", "Terminal"],
+    tokens: tokensFor(bakeoff),
+    updated: grok47,
+    prompt: promptFrom(bakeoff),
   },
 ];
 

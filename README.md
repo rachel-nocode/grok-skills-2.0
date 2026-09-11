@@ -6,7 +6,7 @@ Skills say **how**. Routines say **when**. Templates are the shareable Bot (iden
 
 ## What it is
 
-65 paste-ready skills, 10 routines, plus a tiny static marketplace. Open a card, copy the prompt, paste it into Grok Bot, then say:
+75 paste-ready skills, 10 routines, plus a tiny static marketplace. Open a card, copy the prompt, paste it into Grok Bot, then say:
 
 > Save this as a skill named [Name]. Ask me before you send, post, buy, delete, or publish.
 
@@ -168,6 +168,21 @@ The public Grok Bot marketplace is 9 categories. We already covered outbound, ta
 - skills/event-producer/SKILL.md -- Event Producer -- Ops
 - skills/docs-qa/SKILL.md -- Docs Q&A -- Ops
 - skills/bot-org/SKILL.md -- Bot Org -- Automation
+
+## Grok 4.7-era skills (rumor-shaped)
+
+xAI has not published Grok 4.7 as of September 11, 2026. The current documented flagship is Grok 4.6. These ten are written for what Musk and the rumor chain keep repeating: SpaceX-style real-world engineering, slower-but-smarter serving, better token efficiency, and a held-out coding bakeoff. They run on Grok Bot today. They do not assume a `grok-4.7` id exists.
+
+- skills/trade-study/SKILL.md -- Trade Study -- Build
+- skills/fmea-desk/SKILL.md -- FMEA Desk -- QA
+- skills/test-review/SKILL.md -- Test Review -- QA
+- skills/interface-control/SKILL.md -- Interface Control -- Build
+- skills/telemetry-forensic/SKILL.md -- Telemetry Forensic -- QA
+- skills/shop-traveler/SKILL.md -- Shop Traveler -- Ops
+- skills/loop-compactor/SKILL.md -- Loop Compactor -- Automation
+- skills/sim-vs-measure/SKILL.md -- Sim vs Measure -- Research
+- skills/hardware-review/SKILL.md -- Hardware Review -- Build
+- skills/bakeoff/SKILL.md -- Bakeoff -- Automation
 
 ## Routines
 
